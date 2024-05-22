@@ -29,12 +29,12 @@ It is recommended to run this code inside a `conda` environment with `python3.10
 
 Latest tested combination of the following packages for Python 3 are required:
 
-- PyTorch
-- DGL
-- NetworkX
-- scikit-learn
-- NumPy
-- SciPy
+- PyTorch (2.0.0)
+- DGL (1.0.2)
+- NetworkX (2.8.4)
+- Sklearn (1.2.2)
+- NumPy (1.23.5)
+- SciPy (1.10.1)
 
 
 To install all the requirements, run the following command:
@@ -50,6 +50,13 @@ Once the environment is configured, the programs can be run by the following com
     python Main.py
    ```
 
+## Introductions
+APT-MMF addresses the insufficient feature extraction and fusion problems encountered in the Cyber Threat Intelligence (CTI)-based APT actor attribution research. The main idea is the multimodal and multilevel feature fusion by multimodal node features and multilevel heterogeneous graph attention networks. This repository provides a reference implementation of APT-MMF, including the main programs, various utilities, etc. The execution results of APT-MMF for multiclassification tasks concerning APT actor attribution achieve a Micro-F<sub>1</sub> value of 83.2% and a Macro-F<sub>1</sub> value of 70.5% on a heterogeneous attributed graph dataset contained 1300 APT reports of 21 APT groups.
+
+
+Please read our paper for more details.
+The preprint version of the paper is available at [arXiv:2402.12743](https://arxiv.org/abs/2402.12743).
+
 ## Citing
 
 If you find APT-MMF useful in your research, please cite the following paper:
@@ -60,7 +67,5 @@ If you find APT-MMF useful in your research, please cite the following paper:
         journal={arXiv preprint arXiv:2402.12743},
         year={2024}
     }
-
-The preprint version of our paper is available at [arXiv:2402.12743](https://arxiv.org/abs/2402.12743).
 
 *Note: Additional resources will be released publicly after the publication of our paper.*
