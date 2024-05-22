@@ -1,0 +1,7 @@
+torch==2.0.0
+dgl==1.0.2
+torchvision==0.15.0
+networkx==2.8.4
+scikit-learn==1.2.2
+numpy==1.23.5
+scipy==1.10.1
