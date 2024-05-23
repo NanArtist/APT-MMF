@@ -5,9 +5,9 @@ from sklearn.metrics import f1_score
 
 ###### ----- Path----- ######
 
-analysis_file_data = os.path.join('data', 'embed')
-ckpt_data = os.path.join('data', 'ckpt')
-log_data = os.path.join('data', 'log')
+analysis_file_data = os.path.join('Attribution', 'emb')
+ckpt_data = os.path.join('Attribution', 'ckpt')
+log_data = os.path.join('Attribution', 'log')
 
 
 ###### ----- Schema & Label----- ######
@@ -66,12 +66,11 @@ default_configure = {
     'ft_hidden_dim':256,
     'ft_out_dim':64,
     # Multilevel attention networks
-    'emb_dim':256,                
-    'hidden_dim':256,             
-    'dropout_rate':0.80,          
-    'num_heads': [8,[32]],        
+    'emb_dim':256,                          
+    'dropout_ioc':0.80,          
+    'num_heads': [8, 32],        
     'hidden_units': 8,           
-    'dropout': 0.40,             
+    'dropout_mpneigh': 0.40,             
 }
 
 
@@ -164,16 +163,6 @@ def evaluate(model, g, inputs, mask, labels=None, loss_func=None):
     loss = loss_func(logits[mask], labels[mask])
     accuracy, micro_f1, macro_f1 = score(logits[mask], labels[mask])
     return loss, accuracy, micro_f1, macro_f1
-
-
-def wrong_classification(labels, preds):
-    row_indices = (labels!=preds).nonzero().flatten()
-    report_id_label = np.genfromtxt(os.path.join(analysis_file_data, 'report_id_label.txt'), dtype=np.dtype(str), delimiter='\t', encoding='utf-8')
-    index_apt = read_pickle(os.path.join(analysis_file_data, 'index_apt.pkl'))
-    result = []
-    for each in row_indices:
-        result.append((int(report_id_label[int(each)][0]), index_apt[int(labels[each])], index_apt[int(preds[each])]))
-    return result
 
 
 ###### ----- I/O Tools ----- ######

@@ -1,6 +1,5 @@
 import os, time, torch
-from model import Attribution
-from model_utils import log_data, args_parse, EarlyStopping, score, evaluate, write_log, wrong_classification
+from model_utils import log_data, args_parse, EarlyStopping, score, evaluate, write_log
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -38,15 +37,14 @@ def model_run(args):
                         nlt_in_size=nlt_feat.shape[1],
                         ft_out_dim=args['ft_out_dim'],
                         # Multilevel attention networks
-                        emb_dim=args['emb_dim'],            # IOC type-level attention
-                        hidden_dim=args['hidden_dim'],      
+                        emb_dim=args['emb_dim'],            # IOC type-level attention   
                         type_dim=node_type_vec.shape[1],    
-                        dropout_rate=args['dropout_rate'],  
+                        dropout_ioc=args['dropout_ioc'],  
                         num_heads=args['num_heads'],        
                         num_meta_paths=len(homoG_adj_MPs),  # metapath-based neighbor node-level and metapath semantic-level attention
                         hidden_size=args['hidden_units'],   
                         out_size=num_classes,               
-                        dropout=args['dropout'],            
+                        dropout_mpneigh=args['dropout_mpneigh'],            
                         # Others
                         cuda=args['cuda']).to(args['device'])
 
@@ -88,9 +86,6 @@ def model_run(args):
     log_str = 'Total seconds for train and test: {}s'.format(int(end-start))
     log_strs.append(log_str)
     print(log_str)
-    wc_list = wrong_classification(labels.cpu(), logits.argmax(dim=1).cpu())
-    log_str = '# total samples: {}, # wrong classifications: {}, (NEO4J_ID, True_label, Predicted_label): {}'.format(labels.shape[0], len(wc_list), wc_list)
-    log_strs.append(log_str)
 
     write_log(log_strs, os.path.join(log_data, stopper.time+'_log.txt'))
     return None
