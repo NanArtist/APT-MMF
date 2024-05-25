@@ -30,7 +30,7 @@ It is recommended to run this code inside a `conda` environment with `python3.10
 Latest tested combination of the following packages for Python 3 are required:
 
 - PyTorch (2.0.0)
-- DGL (1.0.2)
+- DGL (1.0.1)
 - NetworkX (2.8.4)
 - Sklearn (1.2.2)
 - NumPy (1.23.5)
@@ -68,4 +68,4 @@ If you find APT-MMF useful in your research, please cite the following paper:
         year={2024}
     }
 
-*Note: Additional resources will be released publicly after the publication of our paper.*
+*Note: We will also release additional resources publicly after the publication of our paper. Thank you for your interest in our research.*
