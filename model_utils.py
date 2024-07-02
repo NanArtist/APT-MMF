@@ -1,11 +1,11 @@
-import os, json, pickle, torch, joblib, random, datetime, argparse
+import os, torch, random, datetime, argparse
 import numpy as np
 from sklearn.metrics import f1_score
 
 
 ###### ----- Path----- ######
 
-analysis_file_data = os.path.join('Attribution', 'emb')
+embed_data = os.path.join('Attribution', 'emb')
 ckpt_data = os.path.join('Attribution', 'ckpt')
 log_data = os.path.join('Attribution', 'log')
 
@@ -166,34 +166,6 @@ def evaluate(model, g, inputs, mask, labels=None, loss_func=None):
 
 
 ###### ----- I/O Tools ----- ######
-
-def read_json(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        json_dict = json.load(f)
-    return json_dict
-
-
-def write_json(result_dict, path):
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(result_dict, f, ensure_ascii=False, indent=4)
-
-
-def read_pickle(path, mode='pickle'):
-    with open(path, 'rb') as f:
-        if mode != 'joblib':
-            result_dict = pickle.load(f)
-        else:
-            result_dict = joblib.load(f)
-    return result_dict
-
-
-def write_pickle(result_dict, path, mode='pickle'):
-    with open(path, 'wb') as f:
-        if mode != 'joblib':
-            pickle.dump(result_dict, f)
-        else:
-            joblib.dump(result_dict, f, protocol = 4)
-
 
 def write_log(logstr_list, path):
     with open(path, 'w', encoding='utf-8') as f:

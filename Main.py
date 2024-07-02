@@ -1,4 +1,5 @@
 import os, time, torch
+from model import Attribution
 from model_utils import log_data, args_parse, EarlyStopping, score, evaluate, write_log
 
 import warnings
@@ -9,8 +10,8 @@ def model_run(args):
 
     start = time.time()
 
-    # load data
-    homoG_adj_MPs,labels,num_classes,train_mask,val_mask,test_mask,heterG_adj,report_node,attribute_type_feat,nlt_feat,topo_relation_feat,node_type_vec = load_cti_kg()
+    # load data. For more information, see Attribution/emb/emb.md.
+    labels,num_classes,train_mask,val_mask,test_mask,attribute_type_feat,nlt_feat,topo_relation_feat,node_type_vec,heterG_adj,report_node,homoG_adj_MPs = load_cti_kg()
     print('dataset loaded.')
 
     if hasattr(torch, 'BoolTensor'):

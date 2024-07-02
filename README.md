@@ -2,7 +2,7 @@
 
 This repository provides a reference implementation of *APT-MMF* as described in the paper:<br>
 > APT-MMF: An advanced persistent threat actor attribution method based on multimodal and multilevel feature fusion.<br>
-> *Under Review*, 2024.<br>
+> Computers & Security, 2024.<br>
 
 ## Installation and Execution
 
@@ -45,27 +45,29 @@ python -m pip install -r requirements.txt
 
 ### Execution
  
-Once the environment is configured, the programs can be run by the following command:
+Once the environment is configured and the input data is prepared as described in [emb.md](Attribution/emb/emb.md), the programs can be run by the following command:
    ```sh
     python Main.py
    ```
 
-## Introductions
+## Introduction
 APT-MMF addresses the insufficient feature extraction and fusion problems encountered in the Cyber Threat Intelligence (CTI)-based APT actor attribution research. The main idea is the multimodal and multilevel feature fusion by multimodal node features and multilevel heterogeneous graph attention networks. This repository provides a reference implementation of APT-MMF, including the main programs, various utilities, etc. The execution results of APT-MMF for multiclassification tasks concerning APT actor attribution achieve a Micro-F<sub>1</sub> value of 83.2% and a Macro-F<sub>1</sub> value of 70.5% on a heterogeneous attributed graph dataset contained 1300 APT reports of 21 APT groups.
 
 
 Please read our paper for more details.
 The preprint version of the paper is available at [arXiv:2402.12743](https://arxiv.org/abs/2402.12743).
+The final version is now available online at [doi:10.1016/j.cose.2024.103960](https://doi.org/10.1016/j.cose.2024.103960).
 
 ## Citing
 
-If you find APT-MMF useful in your research, please cite the following paper:
+If you find *APT-MMF* useful in your research, please consider citing the following paper:
 
     @article{xiao_apt-mmf_2024,
         title={APT-MMF: An advanced persistent threat actor attribution method based on multimodal and multilevel feature fusion},
         author={Xiao, Nan and Lang, Bo and Wang, Ting and Chen, Yikai},
-        journal={arXiv preprint arXiv:2402.12743},
-        year={2024}
+        journal={Computers & Security},
+        year={2024},
+        doi={10.1016/j.cose.2024.103960},
     }
 
-*Note: We will also release additional resources publicly after the publication of our paper. Thank you for your interest in our research.*
+*Thank you for your interest in our research.*
